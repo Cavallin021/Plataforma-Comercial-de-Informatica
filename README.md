@@ -21,7 +21,7 @@ Senha: 1234
 
 ## Como usar
 
-Abra o arquivo `index.html` no navegador.
+Acesse esse link para visualizar a interface grafica do projeto: https://arthurneiva017.github.io/Plataforma-Comercial-de-Informatica/
 
 ## Estrutura
 
