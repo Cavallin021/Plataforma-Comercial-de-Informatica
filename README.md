@@ -1,4 +1,4 @@
-# Front-end - Sistema de Gestão Comercial
+# Front-end - Sistema de Comercial Informatica
 
 Front-end estático em HTML, CSS e JavaScript para um projeto Java/Spring.
 
