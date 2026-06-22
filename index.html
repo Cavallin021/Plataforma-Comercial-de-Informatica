@@ -1,148 +1,257 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sistema de Gestão Comercial</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <section id="login-screen" class="login-screen">
-    <div class="login-card">
-      <div class="login-logo">SG</div>
-      <h1>Sistema de Gestão Comercial</h1>
-      <p>Acesse o painel administrativo</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema de Gestão Comercial</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section id="login-screen" class="login-screen">
+      <div class="login-card">
+        <div class="login-logo">SG</div>
+        <h1>Sistema de Gestão Comercial</h1>
+        <p>Acesse o painel administrativo</p>
 
-      <form id="form-login" class="login-form">
-        <input type="text" id="login-usuario" placeholder="Usuário" required />
-        <input type="password" id="login-senha" placeholder="Senha" required />
-        <button type="submit">Entrar</button>
-      </form>
+        <form id="form-login" class="login-form">
+          <input
+            type="text"
+            id="login-usuario"
+            placeholder="Usuário"
+            required
+          />
+          <input
+            type="password"
+            id="login-senha"
+            placeholder="Senha"
+            required
+          />
+          <button type="submit">Entrar</button>
+        </form>
 
-      <small>Usuário: <strong>admin</strong> | Senha: <strong>1234</strong></small>
-      <span id="login-erro" class="login-error"></span>
-    </div>
-  </section>
-
-  <section id="app-screen" class="app-screen hidden">
-    <aside class="sidebar">
-      <div class="brand">
-        <div class="logo">SG</div>
-        <div>
-          <h1>Gestão Comercial</h1>
-          <span>Painel Administrativo</span>
-        </div>
+        <small
+          >Usuário: <strong>admin</strong> | Senha: <strong>1234</strong></small
+        >
+        <span id="login-erro" class="login-error"></span>
       </div>
+    </section>
 
-      <nav>
-        <button class="nav-btn active" data-section="dashboard">Dashboard</button>
-        <button class="nav-btn" data-section="clientes">Clientes</button>
-        <button class="nav-btn" data-section="produtos">Produtos</button>
-        <button class="nav-btn" data-section="vendas">Vendas</button>
-      </nav>
-
-      <button id="btn-sair" class="logout-btn">Sair</button>
-    </aside>
-
-    <main class="content">
-      <header class="topbar">
-        <div>
-          <h2 id="page-title">Dashboard</h2>
-          <p>Controle de clientes, produtos e vendas.</p>
-        </div>
-        <span class="status">Front-end preparado para API Spring</span>
-      </header>
-
-      <section id="dashboard" class="section active">
-        <div class="cards">
-          <div class="card"><span>Clientes</span><strong id="total-clientes">0</strong></div>
-          <div class="card"><span>Produtos</span><strong id="total-produtos">0</strong></div>
-          <div class="card"><span>Vendas</span><strong id="total-vendas">0</strong></div>
+    <section id="app-screen" class="app-screen hidden">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="logo">SG</div>
+          <div>
+            <h1>Gestão Comercial</h1>
+            <span>Painel Administrativo</span>
+          </div>
         </div>
 
-        <div class="panel">
-          <h3>Visão Geral</h3>
-          <p>
-            Este front-end possui login, cadastro, listagem, exclusão e edição de registros.
-            Os dados funcionam temporariamente em memória e podem ser conectados ao Spring Boot depois.
-          </p>
-        </div>
-      </section>
+        <nav>
+          <button class="nav-btn active" data-section="dashboard">
+            Dashboard
+          </button>
+          <button class="nav-btn" data-section="clientes">Clientes</button>
+          <button class="nav-btn" data-section="produtos">Produtos</button>
+          <button class="nav-btn" data-section="vendas">Vendas</button>
+        </nav>
 
-      <section id="clientes" class="section">
-        <div class="panel">
-          <h3 id="titulo-form-cliente">Cadastrar Cliente</h3>
-          <form id="form-cliente" class="form-grid">
-            <input type="hidden" id="cliente-index" />
-            <input type="text" id="cliente-nome" placeholder="Nome do cliente" required />
-            <input type="email" id="cliente-email" placeholder="E-mail" required />
-            <input type="text" id="cliente-telefone" placeholder="Telefone" required />
-            <button type="submit" id="btn-cliente">Salvar Cliente</button>
-            <button type="button" id="cancelar-cliente" class="btn-secondary hidden">Cancelar</button>
-          </form>
-        </div>
+        <button id="btn-sair" class="logout-btn">Sair</button>
+      </aside>
 
-        <div class="panel">
-          <h3>Lista de Clientes</h3>
-          <table>
-            <thead>
-              <tr><th>Nome</th><th>E-mail</th><th>Telefone</th><th>Ações</th></tr>
-            </thead>
-            <tbody id="lista-clientes"></tbody>
-          </table>
-        </div>
-      </section>
+      <main class="content">
+        <header class="topbar">
+          <div>
+            <h2 id="page-title">Dashboard</h2>
+            <p>Controle de clientes, produtos e vendas.</p>
+          </div>
+          <span class="status">Front-end preparado para API Spring</span>
+        </header>
 
-      <section id="produtos" class="section">
-        <div class="panel">
-          <h3 id="titulo-form-produto">Cadastrar Produto</h3>
-          <form id="form-produto" class="form-grid">
-            <input type="hidden" id="produto-index" />
-            <input type="text" id="produto-nome" placeholder="Nome do produto" required />
-            <input type="number" id="produto-preco" placeholder="Preço" step="0.01" required />
-            <input type="number" id="produto-estoque" placeholder="Estoque" required />
-            <button type="submit" id="btn-produto">Salvar Produto</button>
-            <button type="button" id="cancelar-produto" class="btn-secondary hidden">Cancelar</button>
-          </form>
-        </div>
+        <section id="dashboard" class="section active">
+          <div class="cards">
+            <div class="card">
+              <span>Clientes</span><strong id="total-clientes">0</strong>
+            </div>
+            <div class="card">
+              <span>Produtos</span><strong id="total-produtos">0</strong>
+            </div>
+            <div class="card">
+              <span>Vendas</span><strong id="total-vendas">0</strong>
+            </div>
+          </div>
 
-        <div class="panel">
-          <h3>Lista de Produtos</h3>
-          <table>
-            <thead>
-              <tr><th>Produto</th><th>Preço</th><th>Estoque</th><th>Ações</th></tr>
-            </thead>
-            <tbody id="lista-produtos"></tbody>
-          </table>
-        </div>
-      </section>
+          <div class="panel">
+            <h3>Visão Geral</h3>
+            <p>
+              Este front-end possui login, cadastro, listagem, exclusão e edição
+              de registros. Os dados funcionam temporariamente em memória e
+              podem ser conectados ao Spring Boot depois.
+            </p>
+          </div>
+        </section>
 
-      <section id="vendas" class="section">
-        <div class="panel">
-          <h3 id="titulo-form-venda">Registrar Venda</h3>
-          <form id="form-venda" class="form-grid">
-            <input type="hidden" id="venda-index" />
-            <input type="text" id="venda-cliente" placeholder="Cliente" required />
-            <input type="text" id="venda-produto" placeholder="Produto" required />
-            <input type="number" id="venda-quantidade" placeholder="Quantidade" required />
-            <button type="submit" id="btn-venda">Registrar Venda</button>
-            <button type="button" id="cancelar-venda" class="btn-secondary hidden">Cancelar</button>
-          </form>
-        </div>
+        <section id="clientes" class="section">
+          <div class="panel">
+            <h3 id="titulo-form-cliente">Cadastrar Cliente</h3>
+            <form id="form-cliente" class="form-grid">
+              <input type="hidden" id="cliente-index" />
+              <input
+                type="text"
+                id="cliente-nome"
+                placeholder="Nome do cliente"
+                required
+              />
+              <input
+                type="email"
+                id="cliente-email"
+                placeholder="E-mail"
+                required
+              />
+              <input
+                type="text"
+                id="cliente-telefone"
+                placeholder="Telefone"
+                required
+              />
+              <input type="text" id="cliente-cpf" placeholder="CPF" required />
+              <input
+                type="text"
+                id="cliente-endereco"
+                placeholder="Endereço"
+                required
+              />
+              <button type="submit" id="btn-cliente">Salvar Cliente</button>
+              <button
+                type="button"
+                id="cancelar-cliente"
+                class="btn-secondary hidden"
+              >
+                Cancelar
+              </button>
+            </form>
+          </div>
 
-        <div class="panel">
-          <h3>Histórico de Vendas</h3>
-          <table>
-            <thead>
-              <tr><th>Cliente</th><th>Produto</th><th>Quantidade</th><th>Ações</th></tr>
-            </thead>
-            <tbody id="lista-vendas"></tbody>
-          </table>
-        </div>
-      </section>
-    </main>
-  </section>
+          <div class="panel">
+            <h3>Lista de Clientes</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>E-mail</th>
+                  <th>Telefone</th>
+                  <th>CPF</th>
+                  <th>Endereço</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="lista-clientes"></tbody>
+            </table>
+          </div>
+        </section>
 
-  <script src="script.js"></script>
-</body>
+        <section id="produtos" class="section">
+          <div class="panel">
+            <h3 id="titulo-form-produto">Cadastrar Produto</h3>
+            <form id="form-produto" class="form-grid">
+              <input type="hidden" id="produto-index" />
+              <input
+                type="text"
+                id="produto-nome"
+                placeholder="Nome do produto"
+                required
+              />
+              <input
+                type="number"
+                id="produto-preco"
+                placeholder="Preço"
+                step="0.01"
+                required
+              />
+              <input
+                type="number"
+                id="produto-estoque"
+                placeholder="Estoque"
+                required
+              />
+              <button type="submit" id="btn-produto">Salvar Produto</button>
+              <button
+                type="button"
+                id="cancelar-produto"
+                class="btn-secondary hidden"
+              >
+                Cancelar
+              </button>
+            </form>
+          </div>
+
+          <div class="panel">
+            <h3>Lista de Produtos</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Produto</th>
+                  <th>Preço</th>
+                  <th>Estoque</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="lista-produtos"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="vendas" class="section">
+          <div class="panel">
+            <h3 id="titulo-form-venda">Registrar Venda</h3>
+            <form id="form-venda" class="form-grid">
+              <input type="hidden" id="venda-index" />
+              <input
+                type="text"
+                id="venda-cliente"
+                placeholder="Cliente"
+                required
+              />
+              <input
+                type="text"
+                id="venda-produto"
+                placeholder="Produto"
+                required
+              />
+              <input
+                type="number"
+                id="venda-quantidade"
+                placeholder="Quantidade"
+                required
+              />
+              <button type="submit" id="btn-venda">Registrar Venda</button>
+              <button
+                type="button"
+                id="cancelar-venda"
+                class="btn-secondary hidden"
+              >
+                Cancelar
+              </button>
+            </form>
+          </div>
+
+          <div class="panel">
+            <h3>Histórico de Vendas</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Cliente</th>
+                  <th>Produto</th>
+                  <th>Quantidade</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="lista-vendas"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
 </html>
